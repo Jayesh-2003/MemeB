@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/ANDROID DEV/SoundB/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/ANDROID DEV/SoundB/app/src/main/res/drawable/mybutton.xml" value="0.2235" />
+        <entry key="..\:/ANDROID DEV/SoundB/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/ANDROID DEV/SoundB/app/src/main/res/layout/mybutton.xml" value="0.23229166666666667" />
+        <entry key="..\:/ANDROID DEV/SoundB/app/src/main/res/layout/sound_item.xml" value="0.4126984126984127" />
       </map>
     </option>
   </component>
