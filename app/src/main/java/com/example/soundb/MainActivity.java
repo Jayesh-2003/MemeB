@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    String[] soundList={"Love","BabyCry","AtharvaLaugh"};
+    String[] soundList={"BabyCry","AtharvaLaugh","FuckOff","Run","FuckThisShitImOut","AreeVedya"};
 
     RecyclerView SoundView;
     SoundboardRecyclerAdapter SoundAdapter =new SoundboardRecyclerAdapter(soundList);
