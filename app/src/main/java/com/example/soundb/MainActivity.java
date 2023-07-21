@@ -1,6 +1,9 @@
 package com.example.soundb;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -16,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView SoundView;
     SoundboardRecyclerAdapter SoundAdapter =new SoundboardRecyclerAdapter(soundList);
     RecyclerView.LayoutManager SoundLayoutManager;
+    Button uploadBtn = findViewById(R.id.btn_upload);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
         SoundLayoutManager = new GridLayoutManager(this, 3);
         SoundView.setLayoutManager(SoundLayoutManager);
         SoundView.setAdapter(SoundAdapter);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventHandlerClass.releaseMediaPlayer();
     }
 
     @Override
@@ -38,4 +49,12 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         EventHandlerClass.releaseMediaPlayer();
     }
+
+    public void uploadBtn(View view) {
+//        Intent intent = new Intent(MainActivity.this,UploadActivity.class);
+//        startActivity(intent);
+        startActivity(new Intent(MainActivity.this, UploadActivity.class));
+    }
+
+
 }

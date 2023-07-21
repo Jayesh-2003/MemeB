@@ -21,7 +21,7 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/materialToolbar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/gark_grey"
@@ -49,6 +49,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:onClick="uploadBtn"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
