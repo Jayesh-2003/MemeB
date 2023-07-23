@@ -2,7 +2,7 @@
     <string name="app_name">MemeBoard</string>
     <string name="btn_upload">Upload</string>
     <string name="fileNotSelected">No file selected</string>
-    <string name="memeTitle">Meme Title</string>
+    <string name="memeTitle">Meme Title</string>No file selected
     <string name="uploadMeme">Upload Meme</string>
     <string-array name="soundNames">
         <item>Atharva_laugh</item>

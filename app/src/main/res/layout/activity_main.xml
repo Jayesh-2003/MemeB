@@ -21,13 +21,8 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/materialToolbar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/gark_grey"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
             app:title="@string/app_name"
+            style="@style/toolBar"
             app:titleTextColor="@color/title" />
     </LinearLayout>
 
