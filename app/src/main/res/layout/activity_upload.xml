@@ -9,16 +9,11 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/gark_grey"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/app_name"
+        style="@style/toolbar"
         app:titleTextColor="@color/title" />
 
     <EditText
@@ -49,6 +44,7 @@
         <Button
             android:id="@+id/uploadMeme"
             style="@style/Widget.AppCompat.Button"
+            android:onClick="openAudioFileDialog"
             android:layout_width="16dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -57,7 +53,7 @@
 
         <TextView
             android:id="@+id/textViewMemeFileSelected"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_weight="1"

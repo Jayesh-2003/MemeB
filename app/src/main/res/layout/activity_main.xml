@@ -21,8 +21,9 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/materialToolbar"
-            app:title="@string/app_name"
             style="@style/toolBar"
+            app:title="@string/app_name"
+            app:titleMarginStart="34dp"
             app:titleTextColor="@color/title" />
     </LinearLayout>
 

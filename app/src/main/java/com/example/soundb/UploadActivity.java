@@ -1,6 +1,7 @@
 package com.example.soundb;
 
-import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -11,6 +12,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class UploadActivity extends AppCompatActivity {
@@ -20,44 +25,43 @@ public class UploadActivity extends AppCompatActivity {
     Uri audioUri;
 
 
+    ActivityResultLauncher<Intent> intentActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        audioUri = data.getData();
+                        textViewImage.setText(getFileName(audioUri, getApplicationContext()));
+                    }
+                }
+            }
+    );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
-        editTextTitle = findViewById(R.id.memeTitle);
-        textViewImage = findViewById(R.id.textViewMemeFileSelected);
-        progressBar = findViewById(R.id.progressBar);
+        editTextTitle = (EditText) findViewById(R.id.memeTitle);
+        textViewImage = (TextView) findViewById(R.id.textViewMemeFileSelected);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
 
     }
 
-    public void openAudioFile(View v) {
-        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-        i.setType("audio/*");
-        startActivityForResult(i, 101);
-
+    public void openAudioFileDialog(View view) {
+        Intent data = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        data.setType("audio/*");
+        data = Intent.createChooser(data, "Choose MemeAudio");
+        intentActivityResultLauncher.launch(data);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 101 && requestCode == RESULT_OK && data.getData() != null) {
-            audioUri = data.getData();
-            String fileName = getFileName(audioUri);
-
-            textViewImage.setText(fileName);
-        }
-    }
-
-
-    @SuppressLint("Range")
-    private String getFileName(Uri uri) {
+    String getFileName(Uri uri, Context context) {
         String result = null;
         if (uri.getScheme().equals("content")) {
-            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-
-
+            Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
             try {
                 if (cursor != null && cursor.moveToFirst()) {
                     result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
@@ -65,15 +69,15 @@ public class UploadActivity extends AppCompatActivity {
             } finally {
                 cursor.close();
             }
-
-        }
-        if (result == null) {
-            result = uri.getPath();
-            int cut = result.lastIndexOf("/");
-            if (cut != -1) {
-                result = result.substring(cut + 1);
+            if (result == null) {
+                result = uri.getPath();
+                int cutt = result.lastIndexOf('/');
+                if (cutt != -1) {
+                    result = result.substring(cutt + 1);
+                }
             }
         }
         return result;
     }
+
 }
