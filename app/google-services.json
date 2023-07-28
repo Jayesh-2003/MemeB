@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "44787481281",
-    "project_id": "memeboard-c1bbb",
-    "storage_bucket": "memeboard-c1bbb.appspot.com"
+    "project_number": "1006957810552",
+    "project_id": "memeboard-3a725",
+    "storage_bucket": "memeboard-3a725.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:44787481281:android:d4d1c156962434e4f4f240",
+        "mobilesdk_app_id": "1:1006957810552:android:87554d0d9c041b7780ee8d",
         "android_client_info": {
           "package_name": "com.example.soundb"
         }
       },
       "oauth_client": [
         {
-          "client_id": "44787481281-f570dijht2hjqcbbbe6sh4p22ibjr72p.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.soundb",
-            "certificate_hash": "1274eb680097059c39373a1cc8a3002e243e906e"
-          }
-        },
-        {
-          "client_id": "44787481281-kq67btdpvdj6ssq0o7rllhdg027p7lac.apps.googleusercontent.com",
+          "client_id": "1006957810552-4gre1b59bfbnq5htd1d4prlo0vni0toj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAUeabrf0VVjw5TXJd0Nrr-NF0gBBMeQoQ"
+          "current_key": "AIzaSyCO6sQ-up90LVqJlNhkV8yD24f8_MPtg1A"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "44787481281-kq67btdpvdj6ssq0o7rllhdg027p7lac.apps.googleusercontent.com",
+              "client_id": "1006957810552-4gre1b59bfbnq5htd1d4prlo0vni0toj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

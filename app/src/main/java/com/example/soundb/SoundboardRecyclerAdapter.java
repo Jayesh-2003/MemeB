@@ -1,5 +1,6 @@
 package com.example.soundb;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,45 +9,62 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.example.soundb.Model.UploadMeme;
+
+import java.io.IOException;
+import java.util.List;
+
 
 public class SoundboardRecyclerAdapter extends RecyclerView.Adapter<SoundboardRecyclerAdapter.SoundboardViewHolder> {
-    private ArrayList<SoundObject> soundObjects;
-    public SoundboardRecyclerAdapter(ArrayList<SoundObject> soundObjects){
-        this.soundObjects=soundObjects;
+
+    Context context;
+    List<UploadMeme> arrayListMemes;
+
+
+    public SoundboardRecyclerAdapter(Context context, List<UploadMeme> arrayListMemes) {
+        this.context = context;
+        this.arrayListMemes = arrayListMemes;
     }
+
     @Override
     public SoundboardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView= LayoutInflater.from(parent.getContext()).inflate(R.layout.sound_item,null);
-        return new SoundboardViewHolder(itemView);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sound_item, parent, false);
+        return new SoundboardViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull SoundboardViewHolder holder, int position) {
-        final SoundObject object= soundObjects.get(position);
-        final Integer soundID =object.getItemID();
-        holder.itemTextView.setText(object.getItemName());
+        UploadMeme uploadMeme = arrayListMemes.get(position);
+        holder.titleText.setText(uploadMeme.getMemeTitle());
 
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EventHandlerClass.startMediaPlayer(v,soundID);
-            }
-        });
 
     }
 
     @Override
     public int getItemCount() {
-        return soundObjects.size();
+        return arrayListMemes.size();
     }
-    public class SoundboardViewHolder extends RecyclerView.ViewHolder{
 
-        TextView itemTextView;
+    public class SoundboardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView titleText;
+
         public SoundboardViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemTextView=(TextView) itemView.findViewById(R.id.textViewItem);
+            titleText = itemView.findViewById(R.id.textViewItem);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            //we need to play selected audio
+            try {
+                ((MainActivity) context).playMeme(arrayListMemes, getAdapterPosition());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         }
     }
 }

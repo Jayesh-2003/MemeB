@@ -44,11 +44,13 @@
         <Button
             android:id="@+id/uploadMeme"
             style="@style/Widget.AppCompat.Button"
-            android:onClick="openAudioFileDialog"
-            android:layout_width="16dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:maxWidth="16dp"
+            android:onClick="openAudioFileDialog"
             android:text="@string/uploadMeme"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
@@ -68,6 +70,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
@@ -78,9 +81,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/btn_upload"
+        android:onClick="uploadAudioToFirebase"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    <Button
+        android:id="@+id/showMemesBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openMainActivity"
+        android:text="@string/showMemesButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finUploadBtn"
+        app:layout_constraintVertical_bias="0.044" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
